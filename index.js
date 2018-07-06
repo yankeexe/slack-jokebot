@@ -2,7 +2,7 @@ var SlackBot = require('slackbots');
 const axios  = require('axios');
 
 const bot = new SlackBot({
-    token: 'Enter Bot User OAuth Access Token from slack api',
+    token: 'Enter Bot User OAuth Access Token from slack API',
     name: 'jokebot'
 });
 
