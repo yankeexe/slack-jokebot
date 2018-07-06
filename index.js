@@ -2,7 +2,7 @@ var SlackBot = require('slackbots');
 const axios  = require('axios');
 
 const bot = new SlackBot({
-    token: ''Enter Bot User OAuth Access Token from slack api' ',
+    token: 'xoxb-393799273648-395558879863-wPOX5FmhE5wfJRZBQl87qyIl',
     name: 'jokebot'
 });
 
@@ -36,6 +36,8 @@ function handleMessage(message){
     } else if (message.includes(' random'))
     {
         randomJoke()
+    } else if (message.includes(' help')){
+        helpBot()
     }
 }
 
@@ -73,4 +75,12 @@ function randomJoke(){
     } else if(rand === 2){
         yomamaJoke();
     }
+}
+
+//Show help text 
+function helpBot(){
+    const params = {
+        icon_emoji: ':question:'
+    }
+    bot.postMessageToChannel('general',`type @jokebot with either 'chucknorris' or 'yomama' or 'random'`,params);
 }
