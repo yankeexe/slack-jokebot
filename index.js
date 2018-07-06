@@ -31,16 +31,19 @@ bot.on('message', (data) => {
 function handleMessage(message){
     if(message.includes(' chucknorris')){
         chuckJoke();
-    } else if(message.includes( 'yomama')) {
+    } else if(message.includes(' yomama')) {
         yomamaJoke();
+    } else if (message.includes(' random'))
+    {
+        randomJoke()
     }
 }
 
 //Tell a YO Momma Joke
 function yomamaJoke() {
-    axios.get('http://api.icndb.com/jokes/random')
+    axios.get('http://api.yomomma.info')
     .then((res) => {
-        const joke = res.data.value.joke;
+        const joke = res.data.joke;
         
         const params = {
             icon_emoji: ':laughing:'
@@ -60,4 +63,14 @@ function chuckJoke() {
         }
         bot.postMessageToChannel('general',`Chuck Norris: ${joke}`,params);
     })
+}
+
+//Tell a Randome Joke 
+function randomJoke(){
+    const rand = Math.floor(Math.random() *2) +1;
+    if(rand === 1){
+        chuckJoke()
+    } else if(rand === 2){
+        yomamaJoke();
+    }
 }
